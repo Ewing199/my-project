@@ -1,6 +1,10 @@
 <template>
 	<div class="lg_hd">
-		<img src="./logo.png">
+		<el-row>
+			<el-col :span="2">
+				<route<img src="./logo.png">
+			</el-col>
+		</el-row>
 	</div>
 </template>
 

@@ -13,7 +13,8 @@
             <h3>注册</h3>
             <p v-show="showTishi">{{tishi}}</p>
             <input type="text" placeholder="请输入用户名" v-model="newUsername">
-            <input type="password" placeholder="请输入密码" v-model="newPassword">
+            <input type="password" placeholder="请输入密码" v-model.lazy="newPassword">         
+            <input type="password" placeholder="请确认密码" v-model.lazy="checkPassword">
             <button v-on:click="register">注册</button>
             <span v-on:click="ToLogin">已有账号？马上登录</span>
         </div>
@@ -37,11 +38,11 @@
     }
 	.login-wrap{text-align:center;}
     .register-wrap{text-align: center;}
-    input{display:block; width:250px; height:40px; line-height:40px; margin:0 auto; margin-bottom: 10px; outline:none; border:1px solid #888; padding:10px; box-sizing:border-box;}
-    p{color:red;}
-    button{display:block; width:250px; height:40px; line-height: 40px; margin:0 auto; border:none; background-color:#41b883; color:#fff; font-size:16px; margin-bottom:5px;}
-    span{cursor:pointer;}
-    span:hover{color:#41b883;}
+    .lg_bd input{display:block; width:250px; height:40px; line-height:40px; margin:0 auto; margin-bottom: 10px; outline:none; border:1px solid #888; padding:10px; box-sizing:border-box;}
+    .lg_bd p{color:red;}
+    .lg_bd button{display:block; width:250px; height:40px; line-height: 40px; margin:0 auto; border:none; background-color:#41b883; color:#fff; font-size:16px; margin-bottom:5px;}
+    .lg_bd span{cursor:pointer;}
+    .lg_bd span:hover{color:#41b883;}
 </style>
 
 <script>  
@@ -64,6 +65,16 @@
                 newPassword: ''
             }
         },
+        computed:{
+            passwordValidate:function(){
+                var errorText;
+                if (!/^[0-9A-Za-z]{6,15}$/.test(this.newPassword)) {
+                    errorText = '密码少于六位'
+                }else{
+                    errorText = ''
+                }
+            }
+        },
         methods:{
             ToRegister(){
                this.showRegister = true,
@@ -76,11 +87,19 @@
             login(){
                  if(this.username == "" || this.password == ""){
                         alert("请输入用户名或密码")
+                }else{
+                    alert("success login")
                 }
             },
             register(){
-                 if(this.username == "" || this.password == ""){
+                 if(this.newUsername == "" || this.newPassword == ""){
                         alert("请输入用户名或密码")
+                }else if(!/^[0-9A-Za-z]{6,15}$/.test(this.newPassword)){
+                    alert("密码长度不得低于6位")
+                }else if(this.newPassword !== this.checkPassword){
+                    alert("两次密码不匹配")
+                }else{
+                    alert("register success")
                 }
             }
         }

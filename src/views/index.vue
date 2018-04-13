@@ -7,7 +7,7 @@
 </template>
 
 <script>
-    import j_header from "../views/home/header.vue"
+    import j_header from "../views/home/home_header.vue"
     import j_tips from "../views/home/tips-security.vue"
     import j_banner from "../views/login/login.vue"
     
