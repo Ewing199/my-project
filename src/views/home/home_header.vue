@@ -8,7 +8,12 @@
 				<button>查询</button>
 			</el-col>
 			<el-col :span="2" :offset="20">
-				<router-link to='/'><span class="login_style el-icon-caret-bottom">登录</span></router-link>
+				<router-link to='/'><span class="login_style el-icon-caret-bottom" v-show="H_show">登录</span></router-link>
+				
+				<div v-show="H_show_1" class="login_style">
+					<h5>欢迎, {{ name }}</h5>
+					<a href="/" v-on:cilck="quit">注销登录</a>
+				</div>			
 			</el-col>
 		</el-row>
 	</div>
@@ -65,3 +70,34 @@
 		color: #f60;
 	}
 </style>
+
+<script>
+import {setCookie,getCookie,delCookie} from '../../assets/js/cookies'
+export default {
+	data(){
+		return{
+			name:"",
+			H_show: true,
+			H_show_1:false
+		}
+	},
+	computed:{
+		
+	},
+	mounted(){
+		let uname = getCookie("username")
+		this.name = uname
+		if(uname == ""){
+			this.$router.push("/home")
+		}else{
+			this.H_show = false,
+			this.H_show_1 = true
+		}
+	},
+	methods: {
+		quit(){
+			delCookie("username")
+		}
+	}
+}
+</script>

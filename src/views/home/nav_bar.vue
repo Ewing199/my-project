@@ -1,6 +1,6 @@
 <template>
 	<div class="base_nav">
-		<el-menu :default-active="activeIndex" class="el-menu-demo menu_left" mode="horizontal" @select="handleSelect" background-color="#2577e3" text-color="#fff" active-text-color="#f60">	
+		<el-menu  class="el-menu-demo menu_left" mode="horizontal" background-color="#2577e3" text-color="#fff" active-text-color="#f60">	
 			<el-menu-item index="1">首页</el-menu-item>
 			<el-menu-item index="2">养老机构</el-menu-item>
 			<el-menu-item index="3">招聘信息</el-menu-item>
