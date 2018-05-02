@@ -5,6 +5,7 @@ import Home from '@/views/home.vue'
 import Background from '@/views/background'
 import Right_side from '@/views/Background/right_side'
 import Right_side1 from '@/views/background/right_side1'
+import Background_Index from '@/views/background/background_index'
 
 Vue.use(Router)
 
@@ -29,7 +30,10 @@ export default new Router({
           path:'foo',component: Right_side
         },
         {
-          path:'bar',component: Right_side1
+          path:'bar', component:Right_side1
+        },
+        {
+          path:'background_index',component:Background_Index
         }
       ]
     }

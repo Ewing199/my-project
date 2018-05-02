@@ -1,8 +1,5 @@
 <template>
 	<div>
-		<div class="s_title">
-			查询条件
-		</div>
 		<div class="s_main">
 			<el-form label-width="80px" :inline="true"> 
 				<el-form-item label="用户ID" >
@@ -73,10 +70,8 @@
 		background-color: #D2E9FF;
 	}
 	.s_main{
-		padding-top: 10px;
-	}
-	.s_content{
-		height: 
+		padding-top: 20px;
+		background-color: #E2E9EE;
 	}
 </style>
 

@@ -5,6 +5,20 @@
     </div>
 </template>
 
+<style>
+    a{
+		color:#fff;
+	}
+	a:hover{
+		text-decoration: none;
+		color: #f60;
+	}
+	a:active,a:link{
+		text-decoration: none;
+		color: #f60;
+	}
+</style>
+
 <script>
     import b_banner from "../views/Background/banner.vue"
     import b_main from "../views/Background/b_main.vue"
