@@ -1,0 +1,39 @@
+<template>
+	<div>
+		<el-table
+			:data="agency_accredata"
+			border
+			style="width: 100%">
+			<el-table-column
+					prop="agency_name"
+					label="机构名称"
+					width="180">
+			</el-table-column>
+				<el-table-column
+					prop="agecy_user"
+					label="联系人"
+					width="180">
+				</el-table-column>
+			<el-table-column
+					prop="agency_phone"
+					label="手机号"
+					width="180">
+				</el-table-column>
+			<el-table-column
+					prop="agency_quanlification"
+					label="营业执照"
+					width="180">
+				</el-table-column>
+			<el-table-column
+					prop="agency_status"
+					label="状态"
+					width="180">
+				</el-table-column>
+			<el-table-column
+					prop="agency_use"
+					label="操作"
+					width="180">
+				</el-table-column>
+			</el-table>
+	</div>
+</template>
