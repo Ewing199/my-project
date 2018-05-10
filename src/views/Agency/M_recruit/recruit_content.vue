@@ -167,56 +167,56 @@
 					quanlification2:''				
 				},
 				items:[{
-					value:'1',
+					value:'buxian',
 					label:'不限'
 				},
 				{
-					value:'2',
+					value:'zhongzhaun',
 					label:'中专'
 				},
 				{
-					value:'3',
+					value:'jixiao',
 					label:'技校'
 				},
 				{
-					value:'1',
+					value:'gaozhong',
 					label:'高中'
 				}],
 				options: [{
-					value: '1',
+					value: 'benke',
 					label: '本科'
 				},
 				{
-					value:'2',
+					value:'shuoshi',
 					label:'硕士'
 				}],
 				years1:[{
-					value:'1',
+					value:'buxian',
 					label:'不限'
 				},
 				{
-					value:'2',
+					value:'yinian',
 					label:'1年以下'
 				},
 				{
-					value:'3',
+					value:'liangnian',
 					label:'1-2年'
 				},
 				{
-					value:'4',
+					value:'sannian',
 					label:'3-5年'
 				}
 				],
 				years2:[{
-					value:'5',
+					value:'liunian',
 					label:'6-7年'
 				},
 				{
-					value:'6',
+					value:'shinian',
 					label:'7-10年'
 				},
 				{
-					value:'7',
+					value:'henduonian',
 					label:'10年以上'
 				}
 				]

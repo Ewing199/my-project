@@ -10,11 +10,11 @@
 			<el-tab-pane>
 				<span slot="label">机构添加</span>
 				<div class="agency_add">
-					<!-- <el-steps :active="active" finish-status="success" align-center="true">
+					<el-steps :active="active" finish-status="success" align-center="true">
 					  <el-step title="步骤 1"></el-step>
 					  <el-step title="步骤 2"></el-step>
 					  <el-step title="步骤 3"></el-step>
-					</el-steps> -->
+					</el-steps>
 						<div class="agency_info">
 							<p class="el-icon-edit-outline">基本信息</p>
 							<div class="form_agency_info">
@@ -146,8 +146,8 @@
 									</el-form-item> -->
 									<el-form-item>
 									
-										<el-button type="primary" @click="onSubmit()">立即创建</el-button>
-										<!-- <el-button type="primary" @click="submitForm('agency_form')">立即创建</el-button> -->
+										<!-- <el-button type="primary" @click="onSubmit()">立即创建</el-button> -->
+										<el-button type="primary" @click="submitForm('agency_form')">立即创建</el-button>
 										<el-button @click="resetForm('agency_form')">重置</el-button>
 									</el-form-item>
 								</el-form>
@@ -184,6 +184,8 @@
 	}
 </style>
 <script>
+	import { regionData } from 'element-china-area-data'
+
 	export default{
 		data(){
 			return {
@@ -252,48 +254,40 @@
 							{ required:true,message:'请选择是否接受异地老人',trigger:'change'}
 						]
 					},
-				options:[{
-					value:'hubei',
-					label:'湖北',
-					children:[{
-						value:'wuhan',
-						label:'武汉',
-						children:[{
-							value: 'hongshanqu',
-							label:'洪山区'
-						},
-						{
-							value:'wuchang',
-							label:'武昌区'
-						}]
-					}]
-
-				},
-				{
-					value:'hunan',
-					label:'湖南',
-					children:[{
-						value:'changsha',
-						label:'长沙',
-						children:[{
-							value: 'kkk',
-							label:'lkkk'
-						},
-						{
-							value:'aaa',
-							label:'aaa'
-						}]
-					}]
-
-				},
-				]
+					options: regionData
+			
 			};
 		},
 		methods:{
 			submitForm(formName){
 				this.$refs[formName].validate((valid)=>{
 					if(valid){
-						alert('submit');
+						let formbody = this.agency_form
+						let params = {
+							agencyname : formbody.agency_name,
+							agencytype : formbody.agency_type,
+							creater : formbody.agency_boss,
+							agencyquality : formbody.agency_nature,
+							foundedtime : formbody.agency_date,
+							area : formbody.agency_size,
+							bednum : formbody.agency_bed,
+							restnum :  formbody.agency_bed_available,
+							serviceobject : formbody.agency_user_type,
+							minprice :  formbody.agency_price_min,
+							maxprice : formbody.agency_price_max,
+							address: formbody.agency_address,
+							area:formbody.selectedOptions
+						}
+						this.axios.post("http://10.141.1.206:8080/pension/agency/insertAgency",JSON.stringify(params)).then((res)=>{
+							console.log(res)
+							console.log(typeof res.data)
+							if(res.data == 1){
+								alert('等待申请')
+							}else if(res.data == 0){
+								alert('注册失败')
+							}
+						})
+						alert("success")
 					}else{
 						console.log('error submit');
 						return false;
@@ -317,7 +311,7 @@
 					address: formbody.agency_address,
 					area:formbody.selectedOptions
 				}
-				console.log(params)
+				// console.log(params)
 				this.$refs[formName].validate((valid)=>{
 				if(valid){
 					this.axios.post("http://10.141.1.206:8080/pension/agency/insertAgency",JSON.stringify(params)).then((res)=>{
